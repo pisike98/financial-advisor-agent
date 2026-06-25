@@ -1,0 +1,4 @@
+steps:
+  - name: 'ghcr.io/astral-sh/uv:latest'
+    entrypoint: 'uv'
+    args: ['run', 'bq-deploy']
