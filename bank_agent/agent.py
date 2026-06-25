@@ -22,6 +22,7 @@ from .sub_agents import (
     customer_profile_agent,
     transaction_insight_agent,
     financial_advisory_agent,
+    product_recommendation_agent,
     suitability_guardrails_agent,
 )
 
@@ -40,6 +41,7 @@ root_agent = Agent(
         customer_profile_agent,
         transaction_insight_agent,
         financial_advisory_agent,
+        product_recommendation_agent,
         suitability_guardrails_agent,
     ],
     before_model_callback=before_model_callback,

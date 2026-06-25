@@ -1,19 +1,36 @@
-{"account_id":"A001","description":"Supermarket","amount":-45.80,"type":"debit","date":"2026-06-12"}
-{"account_id":"A001","description":"Salary - Acme Corp","amount":3200.00,"type":"credit","date":"2026-06-01"}
-{"account_id":"A001","description":"Streaming Service","amount":-17.99,"type":"debit","date":"2026-05-28"}
-{"account_id":"A001","description":"Electricity Bill","amount":-82.50,"type":"debit","date":"2026-05-20"}
-{"account_id":"A001","description":"Salary - Acme Corp","amount":3200.00,"type":"credit","date":"2026-05-01"}
-{"account_id":"A002","description":"Interest Payment","amount":24.50,"type":"credit","date":"2026-06-01"}
-{"account_id":"A003","description":"Coffee Shop","amount":-4.75,"type":"debit","date":"2026-06-13"}
-{"account_id":"A003","description":"Payroll - City Council","amount":2800.00,"type":"credit","date":"2026-06-01"}
-{"account_id":"A003","description":"Online Retailer","amount":-32.99,"type":"debit","date":"2026-05-30"}
-{"account_id":"A003","description":"Council Tax","amount":-145.00,"type":"debit","date":"2026-05-15"}
-{"account_id":"A005","description":"Freelance Invoice","amount":1500.00,"type":"credit","date":"2026-06-10"}
-{"account_id":"A005","description":"Rent","amount":-950.00,"type":"debit","date":"2026-06-01"}
-{"account_id":"A005","description":"Gym Membership","amount":-35.00,"type":"debit","date":"2026-05-25"}
-{"account_id":"A006","description":"Pension","amount":1200.00,"type":"credit","date":"2026-06-01"}
-{"account_id":"A006","description":"Supermarket","amount":-67.30,"type":"debit","date":"2026-06-09"}
-{"account_id":"A008","description":"Salary - EDB Corp","amount":4500.00,"type":"credit","date":"2026-06-01"}
-{"account_id":"A008","description":"Mortgage Payment","amount":-1200.00,"type":"debit","date":"2026-06-03"}
-{"account_id":"A008","description":"Holiday Booking","amount":-850.00,"type":"debit","date":"2026-05-22"}
-{"account_id":"A009","description":"ISA Transfer","amount":500.00,"type":"credit","date":"2026-06-01"}
+{"account_id":"A001","description":"Supermarket","amount":-45.80,"type":"debit","date":"2026-06-12","category":"Food","is_recurring":false}
+{"account_id":"A001","description":"Salary - Acme Corp","amount":3200.00,"type":"credit","date":"2026-06-01","category":"Income","is_recurring":true}
+{"account_id":"A001","description":"Streaming Service","amount":-17.99,"type":"debit","date":"2026-05-28","category":"Utilities","is_recurring":true}
+{"account_id":"A001","description":"Electricity Bill","amount":-82.50,"type":"debit","date":"2026-05-20","category":"Utilities","is_recurring":true}
+{"account_id":"A001","description":"Salary - Acme Corp","amount":3200.00,"type":"credit","date":"2026-05-01","category":"Income","is_recurring":true}
+{"account_id":"A002","description":"Interest Payment","amount":24.50,"type":"credit","date":"2026-06-01","category":"Income","is_recurring":true}
+{"account_id":"A003","description":"Coffee Shop","amount":-4.75,"type":"debit","date":"2026-06-13","category":"Food","is_recurring":false}
+{"account_id":"A003","description":"Payroll - City Council","amount":2800.00,"type":"credit","date":"2026-06-01","category":"Income","is_recurring":true}
+{"account_id":"A003","description":"Online Retailer","amount":-32.99,"type":"debit","date":"2026-05-30","category":"Shopping","is_recurring":false}
+{"account_id":"A003","description":"Council Tax","amount":-145.00,"type":"debit","date":"2026-05-15","category":"Utilities","is_recurring":true}
+{"account_id":"A005","description":"Freelance Invoice","amount":1500.00,"type":"credit","date":"2026-06-10","category":"Income","is_recurring":false}
+{"account_id":"A005","description":"Rent","amount":-950.00,"type":"debit","date":"2026-06-01","category":"Transfer","is_recurring":true}
+{"account_id":"A005","description":"Gym Membership","amount":-35.00,"type":"debit","date":"2026-05-25","category":"Utilities","is_recurring":true}
+{"account_id":"A006","description":"Pension","amount":1200.00,"type":"credit","date":"2026-06-01","category":"Income","is_recurring":true}
+{"account_id":"A006","description":"Supermarket","amount":-67.30,"type":"debit","date":"2026-06-09","category":"Food","is_recurring":false}
+{"account_id":"A008","description":"Salary - EDB Corp","amount":4500.00,"type":"credit","date":"2026-06-01","category":"Income","is_recurring":true}
+{"account_id":"A008","description":"Mortgage Payment","amount":-1200.00,"type":"debit","date":"2026-06-03","category":"Transfer","is_recurring":true}
+{"account_id":"A008","description":"Holiday Booking","amount":-850.00,"type":"debit","date":"2026-05-22","category":"Travel","is_recurring":false}
+{"account_id":"A009","description":"ISA Transfer","amount":500.00,"type":"credit","date":"2026-06-01","category":"Transfer","is_recurring":true}
+{"account_id":"A010","description":"NHS Payroll","amount":2100.00,"type":"credit","date":"2026-06-01","category":"Income","is_recurring":true}
+{"account_id":"A010","description":"Supermarket G1","amount":-54.20,"type":"debit","date":"2026-06-10","category":"Food","is_recurring":false}
+{"account_id":"A010","description":"Bus Pass","amount":-45.00,"type":"debit","date":"2026-06-02","category":"Travel","is_recurring":true}
+{"account_id":"A011","description":"Pension Service","amount":1500.00,"type":"credit","date":"2026-06-01","category":"Income","is_recurring":true}
+{"account_id":"A011","description":"Local Pharmacy","amount":-15.00,"type":"debit","date":"2026-06-08","category":"Shopping","is_recurring":false}
+{"account_id":"A012","description":"Savings Transfer","amount":500.00,"type":"credit","date":"2026-06-01","category":"Transfer","is_recurring":true}
+{"account_id":"A013","description":"Parents Transfer","amount":400.00,"type":"credit","date":"2026-06-01","category":"Transfer","is_recurring":true}
+{"account_id":"A013","description":"University Bookshop","amount":-38.50,"type":"debit","date":"2026-06-05","category":"Shopping","is_recurring":false}
+{"account_id":"A014","description":"Salary - Finance Corp","amount":7500.00,"type":"credit","date":"2026-06-01","category":"Income","is_recurring":true}
+{"account_id":"A014","description":"Mortgage Payment","amount":-1800.00,"type":"debit","date":"2026-06-03","category":"Transfer","is_recurring":true}
+{"account_id":"A014","description":"Flight Booking","amount":-420.00,"type":"debit","date":"2026-06-12","category":"Travel","is_recurring":false}
+{"account_id":"A016","description":"Salary - Tech Ltd","amount":3100.00,"type":"credit","date":"2026-06-01","category":"Income","is_recurring":true}
+{"account_id":"A016","description":"Train Ticket","amount":-65.00,"type":"debit","date":"2026-06-14","category":"Travel","is_recurring":false}
+{"account_id":"A016","description":"Internet Provider","amount":-32.00,"type":"debit","date":"2026-06-05","category":"Utilities","is_recurring":true}
+{"account_id":"A017","description":"Architecture Client","amount":4500.00,"type":"credit","date":"2026-06-11","category":"Income","is_recurring":false}
+{"account_id":"A017","description":"Supermarket BT","amount":-112.50,"type":"debit","date":"2026-06-12","category":"Food","is_recurring":false}
+{"account_id":"A017","description":"Electricity NI","amount":-95.00,"type":"debit","date":"2026-06-10","category":"Utilities","is_recurring":true}
