@@ -1,5 +1,5 @@
 from google.adk.agents import Agent
-from ..tools.customersearch import customer_database_search
+from ..mcp.bq_mcp_server import get_customer_transactions
 from ..models import VertexGemini
 
 transaction_insight_agent = Agent(
@@ -7,13 +7,13 @@ transaction_insight_agent = Agent(
     model=VertexGemini(model="gemini-2.5-flash"),
     description=(
         "Derives spend categories and savings rate from a verified "
-        "customer's transaction history."
+        "customer's transaction history retrieved via MCP."
     ),
     instruction="""
 You are the Transaction Insight Agent for a banking assistant.
 
 Given a customer_id (already verified by another agent):
-1. Call customer_database_search to retrieve transaction history.
+1. Call get_customer_transactions to retrieve recent transaction history.
 2. Analyze the customer's spending patterns, transaction volume, balances, and recurring bills.
 3. Determine:
    - spending_behaviour: A short label, e.g., "Conservative spender", "High discretionary spender", etc.
@@ -34,5 +34,5 @@ Always respond with strict JSON only, no extra text:
 If there is not enough transaction history, return:
 {"error": "insufficient_transaction_history"}
 """,
-    tools=[customer_database_search],
+    tools=[get_customer_transactions],
 )

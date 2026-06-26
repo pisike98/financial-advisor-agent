@@ -1,5 +1,5 @@
 from google.adk.agents import Agent
-from ..tools.customersearch import customer_id_search, customer_database_search
+from ..mcp.bq_mcp_server import get_customer_profile, get_customer_accounts
 from ..models import VertexGemini
 
 customer_profile_agent = Agent(
@@ -7,15 +7,14 @@ customer_profile_agent = Agent(
     model=VertexGemini(model="gemini-2.5-flash"),
     description=(
         "Builds a customer persona and risk profile from verified "
-        "customer and account data."
+        "customer and account data retrieved via MCP."
     ),
     instruction="""
 You are the Customer Profile Agent for a banking assistant.
 
 Given a customer_id:
-1. Call customer_id_search to verify the customer exists.
-2. Call customer_database_search to retrieve their full profile
-   (income, account types, balances, metadata such as mortgages/debts).
+1. Call get_customer_profile to retrieve their demographics, income, occupation, and mortgages.
+2. Call get_customer_accounts to retrieve active accounts and balances.
 3. Classify the customer into a persona, e.g. "Young Professional",
    "Pre-Retiree", "Student" — based on age, income, and account mix.
 4. Estimate an income_band: "Low", "Medium", or "High".
@@ -41,5 +40,5 @@ Always respond with strict JSON only, no extra text:
 If the customer cannot be verified, return:
 {"error": "customer_not_found"}
 """,
-    tools=[customer_id_search, customer_database_search],
+    tools=[get_customer_profile, get_customer_accounts],
 )

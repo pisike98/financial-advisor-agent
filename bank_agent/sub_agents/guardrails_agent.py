@@ -1,34 +1,17 @@
 from google.adk.agents import Agent
+from ..mcp.knowledge_mcp_server import search_fca_regulations
 from ..models import VertexGemini
-
-
-def check_eligibility_stub(income_band: str, risk_profile: str, products: list[str]) -> dict:
-    """Placeholder eligibility check.
-
-    TODO: Replace with real product eligibility rules once the
-    product catalog dataset is available.
-    """
-    results = {}
-    for product in products:
-        results[product] = {
-            "eligible": True,
-            "checked_rules": ["income_threshold", "risk_alignment"],
-            "note": "[stub] Using placeholder eligibility logic.",
-        }
-    return {
-        "eligibility_results": results,
-    }
-
 
 suitability_guardrails_agent = Agent(
     name="suitability_guardrails_agent",
     model=VertexGemini(model="gemini-2.5-flash"),
     description=(
-        "Final checkpoint — validates a recommendation against risk, "
-        "income, and eligibility rules before it reaches the customer."
+        "Final compliance checkpoint — validates all recommendations against FCA guidelines "
+        "and eligibility rules retrieved from MCP before it reaches the customer."
     ),
     instruction="""
-You are the Suitability & Guardrails Agent — the last checkpoint.
+You are the Suitability & Guardrails Agent — the last compliance checkpoint.
+You are completely stateless.
 
 Given:
 - profile: output from Customer Profile Agent
@@ -38,16 +21,18 @@ Given:
 - recommendations: output from Product Recommendation Agent
   ({"recommendations": [{"recommended_product", "reason", "product_fit", "expected_benefit", "confidence"}, ...]})
 
-Checks:
-1. Risk Alignment: Check if the risk level of each recommended product aligns with profile.risk_profile. Flag any discrepancies.
-2. Product Eligibility: Call check_eligibility_stub with the customer's income_band, risk_profile, and the list of recommended_products extracted from the recommendations. If a product is determined to be ineligible, filter it out from final_recommendations.
-3. Hallucination/Overpromising: Check the advisory_summary and each product's reason/expected_benefit for any hallucinated, unrealistic, or overly specific guarantees (such as promised percentage returns or risk-free double-digit gains). If any are found, add a flag describing the overpromise.
+Checks to run:
+1. Search FCA Regulations: Call search_fca_regulations with key queries such as 'suitability' or 'mortgages' or 'credit' based on the recommended products.
+2. Compliance Check: Match the recommendations and advisory summary against the retrieved FCA rules and guidelines.
+3. Risk Alignment: Check if the risk level of each recommended product aligns with profile.risk_profile. Flag any discrepancies (e.g. recommending stocks to a conservative profile).
+4. Product Eligibility: Based on the customer's income_band, risk_profile, and obligations, filter out any products that are clearly unsuitable or fail eligibility criteria.
+5. Hallucination/Overpromising: Check the advisory_summary and each product's reason/expected_benefit for any hallucinated, unrealistic, or overly specific guarantees (such as promised percentage returns or risk-free double-digit gains). If any are found, add a warning flag.
 
 Output:
 - approved: set to true if at least some products or advice are approved and safe, false if the entire set is rejected/unsuitable.
 - flags: a list of warnings or validation failure strings.
 - final_advisory_summary: the approved advisory_summary string, or null if unapproved.
-- final_recommendations: the list of filtered recommendations that passed eligibility checks, keeping the same JSON schema as the product_recommendation_agent's list, or null if none are approved.
+- final_recommendations: the list of filtered recommendations that passed eligibility and compliance checks, or null if none are approved.
 
 Always respond with strict JSON only, no extra text:
 {
@@ -65,5 +50,5 @@ Always respond with strict JSON only, no extra text:
   ]
 }
 """,
-    tools=[check_eligibility_stub],
+    tools=[search_fca_regulations],
 )
